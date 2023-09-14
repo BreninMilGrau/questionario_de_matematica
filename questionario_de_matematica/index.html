@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário de Matemática</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .question.active {
+            display: block;
+        }
+
+        .question p {
+            margin: 0;
+            font-weight: bold;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #666;
+        }
+
+        .btn-next {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-next:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-submit {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: none;
+            font-weight: bold;
+        }
+
+        .btn-submit:hover {
+            background-color: #45a049;
+        }
+
+        .btn-show-answers {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .btn-show-answers:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #correct-answers {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Questionário de Matemática</h1>
+        <form id="quiz-form">
+            <div class="question active" data-question="q1">
+                <p>1. Quanto é 2 + 2?</p>
+                <label><input type="radio" name="q1" value="a"> a) 3</label>
+                <label><input type="radio" name="q1" value="b"> b) 4</label>
+                <label><input type="radio" name="q1" value="c"> c) 5</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q2">
+                <p>2. Qual é a raiz quadrada de 16?</p>
+                <label><input type="radio" name="q2" value="a"> a) 2</label>
+                <label><input type="radio" name="q2" value="b"> b) 4</label>
+                <label><input type="radio" name="q2" value="c"> c) 8</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q3">
+                <p>3. Quanto é 7 x 9?</p>
+                <label><input type="radio" name="q3" value="a"> a) 56</label>
+                <label><input type="radio" name="q3" value="b"> b) 63</label>
+                <label><input type="radio" name="q3" value="c"> c) 70</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q4">
+                <p>4. Qual é o resultado de 12 ÷ 3?</p>
+                <label><input type="radio" name="q4" value="a"> a) 2</label>
+                <label><input type="radio" name="q4" value="b"> b) 3</label>
+                <label><input type="radio" name="q4" value="c"> c) 4</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q5">
+                <p>5. Qual é 3 ao cubo?</p>
+                <label><input type="radio" name="q5" value="a"> a) 6</label>
+                <label><input type="radio" name="q5" value="b"> b) 9</label>
+                <label><input type="radio" name="q5" value="c"> c) 27</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q6">
+                <p>6. Qual é o resultado de 5 + 7?</p>
+                <label><input type="radio" name="q6" value="a"> a) 10</label>
+                <label><input type="radio" name="q6" value="b"> b) 11</label>
+                <label><input type="radio" name="q6" value="c"> c) 12</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q7">
+                <p>7. Qual é a raiz quadrada de 25?</p>
+                <label><input type="radio" name="q7" value="a"> a) 3</label>
+                <label><input type="radio" name="q7" value="b"> b) 4</label>
+                <label><input type="radio" name="q7" value="c"> c) 5</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q8">
+                <p>8. Quanto é 6 x 8?</p>
+                <label><input type="radio" name="q8" value="a"> a) 42</label>
+                <label><input type="radio" name="q8" value="b"> b) 48</label>
+                <label><input type="radio" name="q8" value="c"> c) 54</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q9">
+                <p>9. Qual é o resultado de 15 ÷ 3?</p>
+                <label><input type="radio" name="q9" value="a"> a) 4</label>
+                <label><input type="radio" name="q9" value="b"> b) 5</label>
+                <label><input type="radio" name="q9" value="c"> c) 6</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q10">
+                <p>10. Qual é 2 elevado à 4ª potência?</p>
+                <label><input type="radio" name="q10" value="a"> a) 4</label>
+                <label><input type="radio" name="q10" value="b"> b) 8</label>
+                <label><input type="radio" name="q10" value="c"> c) 16</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q11">
+                <p>11. Quanto é 9 x 6?</p>
+                <label><input type="radio" name="q11" value="a"> a) 54</label>
+                <label><input type="radio" name="q11" value="b"> b) 63</label>
+                <label><input type="radio" name="q11" value="c"> c) 72</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q12">
+                <p>12. Qual é o resultado de 25 ÷ 5?</p>
+                <label><input type="radio" name="q12" value="a"> a) 3</label>
+                <label><input type="radio" name="q12" value="b"> b) 4</label>
+                <label><input type="radio" name="q12" value="c"> c) 5</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q13">
+                <p>13. Quanto é 8 x 7?</p>
+                <label><input type="radio" name="q13" value="a"> a) 48</label>
+                <label><input type="radio" name="q13" value="b"> b) 56</label>
+                <label><input type="radio" name="q13" value="c"> c) 64</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q14">
+                <p>14. Qual é 3 elevado à 3ª potência?</p>
+                <label><input type="radio" name="q14" value="a"> a) 6</label>
+                <label><input type="radio" name="q14" value="b"> b) 9</label>
+                <label><input type="radio" name="q14" value="c"> c) 27</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q15">
+                <p>15. Qual é o resultado de 18 ÷ 2?</p>
+                <label><input type="radio" name="q15" value="a"> a) 7</label>
+                <label><input type="radio" name="q15" value="b"> b) 9</label>
+                <label><input type="radio" name="q15" value="c"> c) 12</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q16">
+                <p>16. Quanto é 4 x 9?</p>
+                <label><input type="radio" name="q16" value="a"> a) 32</label>
+                <label><input type="radio" name="q16" value="b"> b) 36</label>
+                <label><input type="radio" name="q16" value="c"> c) 40</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q17">
+                <p>17. Qual é a raiz quadrada de 144?</p>
+                <label><input type="radio" name="q17" value="a"> a) 10</label>
+                <label><input type="radio" name="q17" value="b"> b) 12</label>
+                <label><input type="radio" name="q17" value="c"> c) 14</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q18">
+                <p>18. Qual é o resultado de 20 ÷ 4?</p>
+                <label><input type="radio" name="q18" value="a"> a) 3</label>
+                <label><input type="radio" name="q18" value="b"> b) 4</label>
+                <label><input type="radio" name="q18" value="c"> c) 5</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q19">
+                <p>19. Quanto é 6 x 6?</p>
+                <label><input type="radio" name="q19" value="a"> a) 30</label>
+                <label><input type="radio" name="q19" value="b"> b) 36</label>
+                <label><input type="radio" name="q19" value="c"> c) 42</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <div class="question" data-question="q20">
+                <p>20. Qual é o resultado de 10 ÷ 2?</p>
+                <label><input type="radio" name="q20" value="a"> a) 3</label>
+                <label><input type="radio" name="q20" value="b"> b) 4</label>
+                <label><input type="radio" name="q20" value="c"> c) 5</label>
+                <button type="button" class="btn-next">Confirmar</button>
+            </div>
+
+            <button type="submit" class="btn-submit">Enviar Respostas</button>
+            
+        </form>
+        <div class="result" id="quiz-result"></div>
+        <div id="correct-answers"></div>
+    </div>
+
+    <script>
+        const quizForm = document.getElementById('quiz-form');
+        const quizResult = document.getElementById('quiz-result');
+        const questions = document.querySelectorAll('.question');
+        const nextButtons = document.querySelectorAll('.btn-next');
+        const submitButton = document.querySelector('.btn-submit');
+        const showAnswersButton = document.querySelector('.btn-show-answers');
+        const answers = {};
+        let currentQuestion = 0;
+
+        function showQuestion(index) {
+            questions.forEach((question, i) => {
+                if (i === index) {
+                    question.classList.add('active');
+                } else {
+                    question.classList.remove('active');
+                }
+            });
+        }
+
+        function updateButtons() {
+            if (currentQuestion < questions.length - 1) {
+                nextButtons[currentQuestion].style.display = 'block';
+                submitButton.style.display = 'none';
+            } else {
+                nextButtons[currentQuestion].style.display = 'none';
+                submitButton.style.display = 'block';
+            }
+        }
+
+        nextButtons.forEach((button, index) => {
+            button.addEventListener('click', function() {
+                const question = questions[currentQuestion];
+                const radioButtons = question.querySelectorAll('input[type="radio"]');
+
+                radioButtons.forEach(radio => {
+                    radio.disabled = true;
+                });
+
+                answers[question.getAttribute('data-question')] = [...radioButtons].find(radio => radio.checked).value;
+
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    showQuestion(currentQuestion);
+                    updateButtons();
+                }
+            });
+        });
+
+        quizForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            let score = 0;
+
+            const correctAnswers = {
+                q1: 'b',
+                q2: 'b',
+                q3: 'b',
+                q4: 'c',
+                q5: 'c',
+                q6: 'c',
+                q7: 'c',
+                q8: 'b',
+                q9: 'b',
+                q10: 'c',
+                q11: 'a',
+                q12: 'c',
+                q13: 'a',
+                q14: 'c',
+                q15: 'c',
+                q16: 'b',
+                q17: 'b',
+                q18: 'a',
+                q19: 'b',
+                q20: 'b',
+            };
+
+            for (const question in answers) {
+                if (correctAnswers[question] === answers[question]) {
+                    score++;
+                }
+            }
+
+            const correctCount = score;
+            const incorrectCount = questions.length - correctCount;
+
+            const resultMessage = `Você acertou ${correctCount} de ${questions.length} perguntas e errou ${incorrectCount}.`;
+            quizResult.textContent = resultMessage;
+
+            const correctAnswersElement = document.getElementById('correct-answers');
+            correctAnswersElement.innerHTML = '<h2>Respostas Corretas:</h2><ul>';
+
+            for (const question in correctAnswers) {
+                correctAnswersElement.innerHTML += `<li>${question}: ${correctAnswers[question]}</li>`;
+            }
+
+            correctAnswersElement.innerHTML += '</ul>';
+        });
+
+        showAnswersButton.addEventListener('click', function() {
+            const correctAnswersElement = document.getElementById('correct-answers');
+            correctAnswersElement.style.display = 'block';
+        });
+
+        showQuestion(currentQuestion);
+        updateButtons();
+        showAnswersButton.style.display = 'block';
+    </script>
+</body>
+</html>
